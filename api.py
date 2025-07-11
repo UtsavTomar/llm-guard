@@ -9,7 +9,6 @@ from typing import Dict, Any, Optional
 import os
 from llm_guard import scan_output, scan_prompt
 from llm_guard.input_scanners import PromptInjection, Secrets
-from llm_guard.input_scanners.prompt_injection import MatchType 
 from llm_guard.output_scanners import NoRefusal, Relevance
 
 app = FastAPI(
@@ -20,7 +19,7 @@ app = FastAPI(
 
 # Initialize scanners (will be loaded once per serverless function)
 input_scanners = [
-    PromptInjection(threshold=0.5, match_type=MatchType.FULL),
+    PromptInjection(),
     Secrets(),
 ]
 
